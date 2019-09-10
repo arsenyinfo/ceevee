@@ -1,5 +1,9 @@
-torch
-opencv-python-headless
+numpy>=1.16.4
+torch>=0.4.1
+torchvision>=0.2.1
 falcon
+fire
+opencv-python-headless
+PyYAML
+tqdm
 ujson
-

@@ -6,7 +6,7 @@
 
 Python 3.6+ is supported.
 
-## Install 
+## Install
 
 From PyPI - not available yet
 
@@ -18,21 +18,21 @@ pip install -U ceevee-0.0.1-py3-none-any.whl
 
 ## Tasks
 
-## Usage 
+## Usage
 
 All tasks shares the same API
 
-### CLI API 
+### CLI API
 
 `python -m ceevee.cli task /path/to/img1.jpg /path/to/img2.jpg ... /path/to/imgN.jpg > result.json`
 
-### HTTP API  
+### HTTP API
 
-- run a server `python -m ceevee.web port task1 task2`; 
+- run a server `python -m ceevee.web port task1 task2`;
 - send a GET request `host:port/[task]?img=path/to/img` (local and remote paths) are supported
 
-HTTP API is based on [Falcon](https://github.com/falconry/falcon), 
-so it can be used with any WSGI server, such as uWSGI or Gunicorn. 
+HTTP API is based on [Falcon](https://github.com/falconry/falcon),
+so it can be used with any WSGI server, such as uWSGI or Gunicorn.
 
 ### Python API
 
@@ -44,12 +44,12 @@ img = read_img('/path/to/img.jpg')
 result = baseline(img)
 ```
 
-## Contributions 
+## Contributions
 
-Yes, you can add a new model! 
+Yes, you can add a new model!
 
-### Checklist: 
-- create a GitHub issue with your suggested model; 
+### Checklist:
+- create a GitHub issue with your suggested model;
 - create a new Baseline class (see `ceevee.dummy.DummyBaseline`) and implement three methods (`preprocess`, `process`, 
 `postprocess`);
 - add your model to `MODELS` at `ceevee/__init__.py`
@@ -58,7 +58,7 @@ Yes, you can add a new model!
 
 # ToDo:
 - tests
-- CI 
+- CI
 - packaging, pip
 - http: remote files
 - http: files from body
