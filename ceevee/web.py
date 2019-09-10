@@ -9,7 +9,6 @@ from ceevee.utils import jsonify, read_img
 
 
 class BaselineServer:
-
     def __init__(self, model: AbstractBaseline):
         self.model = model
 
@@ -28,16 +27,18 @@ class BaselineServer:
             raise KeyError('Expected GET parameter `img`')
 
 
-def main(task):
-    model = MODELS[task]()
+def main(port, *tasks):
+    tasks = set(tasks)
+    models = {task: MODELS[task]() for task in tasks}
     app = falcon.API()
-    app.add_route('/', BaselineServer(model))
-    return app, task
+    for task, model in models.items():
+        app.add_route(f'/{task}', BaselineServer(model))
+
+    return app, tasks, port
 
 
 if __name__ == '__main__':
-    # ToDo: make multiple APIs at a time
-    app, task = Fire(main)
-    with make_server('', 8193, app) as httpd:
-        print(f'Task {task} is being served on port 8193')
+    app, tasks, port = Fire(main)
+    with make_server('', port, app) as httpd:
+        print(f'Tasks ({", ".join(tasks)}) are being served on port {port}')
         httpd.serve_forever()

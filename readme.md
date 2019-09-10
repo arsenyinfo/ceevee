@@ -28,8 +28,8 @@ All tasks shares the same API
 
 ### HTTP API  
 
-- run a server `python -m ceevee.web task`; 
-- send a GET request `host:port/?img=path/to/img` (local and remote paths) are supported
+- run a server `python -m ceevee.web port task1 task2`; 
+- send a GET request `host:port/[task]?img=path/to/img` (local and remote paths) are supported
 
 HTTP API is based on [Falcon](https://github.com/falconry/falcon), 
 so it can be used with any WSGI server, such as uWSGI or Gunicorn. 
@@ -62,5 +62,3 @@ Yes, you can add a new model!
 - packaging, pip
 - http: remote files
 - http: files from body
-- http: multiple apis at a time
-- http: configurable port 
