@@ -26,7 +26,14 @@ def load_jit_model(x):
 
 
 def read_img(x: str):
-    return cv2.imread(x)[:, :, ::-1]
+    img = cv2.imread(x)
+    if len(img.shape) == 3:  # BGR -> RGB
+        img = img[:, :, ::-1]
+    elif len(img.shape) < 3:  # grayscale -> RGB
+        img = np.expand_dims(img, -1)
+        img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
+
+    return 
 
 
 def jsonify(x):
