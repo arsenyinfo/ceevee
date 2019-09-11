@@ -9,13 +9,13 @@ import os
 import sys
 from shutil import rmtree
 
-from setuptools import find_packages, setup, Command
+from setuptools import Command, find_packages, setup
 
 # Package meta-data.
 NAME = "ceevee"
-DESCRIPTION = "Deep learning based baselines for various problems"
+DESCRIPTION = "Python library for various computer vision problems with a focus on easy usage"
 URL = "https://github.com/arsenyinfo/ceevee"
-AUTHOR = "[ods.ai] Arseny Kravchenko"
+AUTHOR = "[ods.ai] Arseny Kravchenko et al"
 REQUIRES_PYTHON = ">=3.6.0"
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
