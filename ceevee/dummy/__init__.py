@@ -21,4 +21,4 @@ class DummyBaseline(AbstractBaseline):
         x = self.preprocess(x)
         x = self.process(x)
         x = self.postprocess(x)
-        return {'success': True, 'result': ''}
+        return {'success': True, 'result': x}

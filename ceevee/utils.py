@@ -1,6 +1,7 @@
 from typing import Union
 
 import cv2
+import numpy as np
 import torch
 import ujson as json
 import yaml
@@ -39,6 +40,15 @@ def read_img(x: str):
     return img
 
 
+def ensure_serializable(data):
+    if isinstance(data, dict):
+        return {str(k): ensure_serializable(data[k]) for k in data.keys()}
+    elif isinstance(data, list):
+        return [ensure_serializable(x) for x in data]
+    elif isinstance(data, np.ndarray):
+        return data.tolist()
+    return data
+
+
 def jsonify(x):
-    # ToDo: process numpy arrays
-    return json.dumps(x)
+    return json.dumps(ensure_serializable(x))
