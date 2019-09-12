@@ -1,3 +1,5 @@
+[![Build status](https://badge.buildkite.com/3be2c7533d11e157a0b1fef8af1231356349694c459f072ccc.svg)](https://buildkite.com/ceevee/ceevee-tests)
+
 # ceevee
 
 `ceevee` (read like CV, i.e. computer vision) is a Python library for various computer vision problems with a focus on easy usage.
@@ -57,8 +59,15 @@ Yes, you can add a new model!
 - once CI is green, create a pull request!
 
 # ToDo:
-- tests
-- CI
-- packaging, pip
-- http: remote files
-- http: files from body
+
+- infrastructure:
+    - packaging, pip
+- APIs:
+    - http: files from body  
+    - http: tests 
+- models: 
+    - face detection
+    - face emotion
+    - face keypoints 
+    - car detection
+    - crowd density estimation 
