@@ -17,6 +17,8 @@ class CliTestCase(CeeveeTestCase):
             for k in ('result', 'success'):
                 self.assertTrue(k in result)
 
+            self.assertEqual(result['result'], [100, 100, 3])
+
 
 if __name__ == '__main__':
     unittest.main()

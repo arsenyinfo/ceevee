@@ -1,3 +1,5 @@
+import numpy as np
+
 from ceevee.base import AbstractBaseline
 
 
@@ -5,6 +7,7 @@ class DummyBaseline(AbstractBaseline):
     """
     The model effectively does nothing
     """
+
     def __init__(self):
         super().__init__()
 
@@ -12,7 +15,7 @@ class DummyBaseline(AbstractBaseline):
         return x
 
     def process(self, x, *kw):
-        return x
+        return np.array(x.shape)
 
     def postprocess(self, x, *kw):
         return x

@@ -37,11 +37,26 @@ so it can be used with any WSGI server, such as uWSGI or Gunicorn.
 - set env variable `CEEVEE_TASKS` for your tasks,
  multiple comma separated tasks are supported, e.g. `CEEVEE_TASKS=task1,task2` 
 - run a server `CEEVEE_TASKS=dummy gunicorn ceevee.cv_http`;
-- send a POST request using correct `Content-Type`. 
-Example using [httpie](https://httpie.org/): 
-`CEEVEE_TASKS="dummy" http POST localhost:8000/dummy Content-Type:image/png < /tmp/gray.png`)
+- send a POST request with `image` parameter. 
 
-!ToDo: add more detailed example
+```
+$ http -f POST localhost:8000/dummy image@/tmp/img.jpg
+HTTP/1.1 200 OK
+Connection: close
+Date: Sat, 14 Sep 2019 13:47:39 GMT
+Server: gunicorn/19.9.0
+content-length: 37
+content-type: application/json
+
+{
+    "result": [
+        500,
+        500,
+        3
+    ],
+    "success": true
+}
+```
 
 ### Python API
 
