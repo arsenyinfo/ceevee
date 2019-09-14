@@ -30,11 +30,18 @@ All tasks shares the same API
 
 ### HTTP API
 
-- run a server `python -m ceevee.web port task1 task2`;
-- send a GET request `host:port/[task]?img=path/to/img` (local and remote paths) are supported
-
 HTTP API is based on [Falcon](https://github.com/falconry/falcon),
 so it can be used with any WSGI server, such as uWSGI or Gunicorn.
+
+- install your favourite WSGI server (e.g. `pip install gunicorn`)
+- set env variable `CEEVEE_TASKS` for your tasks,
+ multiple comma separated tasks are supported, e.g. `CEEVEE_TASKS=task1,task2` 
+- run a server `CEEVEE_TASKS=dummy gunicorn ceevee.cv_http`;
+- send a POST request using correct `Content-Type`. 
+Example using [httpie](https://httpie.org/): 
+`CEEVEE_TASKS="dummy" http POST localhost:8000/dummy Content-Type:image/png < /tmp/gray.png`)
+
+!ToDo: add more detailed example
 
 ### Python API
 
@@ -63,8 +70,7 @@ Yes, you can add a new model!
 - infrastructure:
     - packaging, pip
 - APIs:
-    - http: files from body  
-    - http: tests 
+    - http: tests, error handling 
 - models: 
     - face detection
     - face emotion
