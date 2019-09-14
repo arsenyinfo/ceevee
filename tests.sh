@@ -5,4 +5,3 @@ pip install -r requirements.txt
 pip install pytest coverage
 coverage run -m pytest
 coverage report
-rm -rf ./*
