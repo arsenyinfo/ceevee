@@ -62,8 +62,8 @@ content-type: application/json
 
 ```python
 from ceevee.utils import read_img
-from ceevee.dummy import DummyBaseline
-baseline = DummyBaseline()
+from ceevee.dummy import DummyPredictor
+baseline = DummyPredictor()
 img = read_img('/path/to/img.jpg')
 result = baseline(img)
 ```

@@ -1,10 +1,10 @@
 
 
-from ceevee.dummy import DummyBaseline
+from ceevee.dummy import DummyPredictor
 
 
-__all__ = ['DummyBaseline']
+__all__ = ['DummyPredictor']
 
 MODELS = {
-    'dummy': DummyBaseline
+    'dummy': DummyPredictor
 }

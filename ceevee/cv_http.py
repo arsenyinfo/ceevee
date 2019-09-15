@@ -5,12 +5,12 @@ import falcon
 from falcon_multipart.middleware import MultipartMiddleware
 
 from ceevee import MODELS
-from ceevee.base import AbstractBaseline
+from ceevee.base import AbstractPredictor
 from ceevee.utils import jsonify, read_img
 
 
 class BaselineServer:
-    def __init__(self, model: AbstractBaseline):
+    def __init__(self, model: AbstractPredictor):
         self.model = model
 
     def _run_model(self, path):
@@ -45,3 +45,4 @@ app = falcon.API(middleware=[MultipartMiddleware()])
 
 for task, model in models.items():
     app.add_route(f'/{task}', BaselineServer(model))
+

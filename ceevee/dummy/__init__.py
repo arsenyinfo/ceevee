@@ -1,9 +1,9 @@
 import numpy as np
 
-from ceevee.base import AbstractBaseline
+from ceevee.base import AbstractPredictor
 
 
-class DummyBaseline(AbstractBaseline):
+class DummyPredictor(AbstractPredictor):
     """
     The model effectively does nothing
     """

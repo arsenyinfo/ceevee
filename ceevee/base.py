@@ -4,7 +4,7 @@ import numpy as np
 import torch
 
 
-class AbstractBaseline:
+class AbstractPredictor:
     @abc.abstractmethod
     def __init__(self):
         pass
