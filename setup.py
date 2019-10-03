@@ -30,8 +30,12 @@ def load_requirements(filename):
 
 def load_readme():
     readme_path = os.path.join(PROJECT_ROOT, "readme.md")
-    with io.open(readme_path, encoding="utf-8") as f:
-        return "\n" + f.read()
+    try:
+        with io.open(readme_path, encoding="utf-8") as f:
+            return "\n" + f.read()
+    except FileNotFoundError:
+        print('Readme not found :(')
+        return ''
 
 
 def load_version():

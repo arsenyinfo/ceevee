@@ -10,7 +10,9 @@ Python 3.6+ is supported.
 
 ## Install
 
-From PyPI - not available yet
+From PyPI
+
+`pip install -U ceevee`
 
 From source
 ```
@@ -82,11 +84,9 @@ Yes, you can add a new model!
 
 # ToDo:
 
-- infrastructure:
-    - packaging, pip
 - APIs:
-    - http: tests, error handling 
-- models: 
+    - http: finalize tests, error handling 
+- actual models: 
     - face detection
     - face emotion
     - face keypoints 
