@@ -6,8 +6,8 @@ import torch
 
 class AbstractPredictor:
     @abc.abstractmethod
-    def __init__(self):
-        pass
+    def __init__(self, cuda_id=0):
+        self.cuda_id = cuda_id
 
     def __call__(self, x, *args, **kwargs) -> dict:
         assert len(x.shape) == 3, "Batch mode is not supported for a while"
@@ -15,7 +15,7 @@ class AbstractPredictor:
         x = self.preprocess(x)
         res = self.process(x)
         res = self.postprocess(res)
-        return res
+        return {'success': True, 'result': res}
 
     @abc.abstractmethod
     def preprocess(self, x, *kw):

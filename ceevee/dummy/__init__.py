@@ -19,9 +19,3 @@ class DummyPredictor(AbstractPredictor):
 
     def postprocess(self, x, *kw):
         return x
-
-    def __call__(self, x, *args, **kwargs):
-        x = self.preprocess(x)
-        x = self.process(x)
-        x = self.postprocess(x)
-        return {'success': True, 'result': x}
