@@ -1,3 +1,4 @@
+import os
 from typing import Union
 
 import cv2
@@ -18,12 +19,27 @@ def ensure_dict(x: Union[str, dict]):
     return load_yaml(x)
 
 
-def to_device(x):
-    return x.cuda() if torch.cuda.is_available() else x
+def to_device(x, cuda_id=0):
+    return x.cuda(cuda_id) if torch.cuda.is_available() else x
 
 
-def load_jit_model(x):
-    return torch.jit.load(x, map_location='cuda:0' if torch.cuda.is_available() else 'cpu')
+def load_jit_model(x, cuda_id=0):
+    return torch.jit.load(x, map_location=f'cuda:{cuda_id}' if torch.cuda.is_available() else 'cpu')
+
+
+def update_config(config, params):
+    for k, v in params.items():
+        if k not in config:
+            logger.warning(f'Overwriting non-existing attribute {k} = {v}')
+        else:
+            logger.info(f'Overwriting {k} = {v} (was {config.get(k)})')
+        config[k] = v
+
+    return config
+
+
+def get_relative_path(x, rel_to):
+    return os.path.join(os.path.dirname(rel_to), x)
 
 
 def read_img(x: str):
