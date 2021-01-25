@@ -31,7 +31,6 @@ class FeaturesExtractor(AbstractPredictor):
         img = np.pad(img, ((0, min_height - h), (0, min_width - w), (0, 0)),
                      mode='constant', constant_values=0)
         x = np.transpose(img, (2, 0, 1)).astype('float32')
-        print(x.shape)
         return to_device(torch.from_numpy(x).unsqueeze(0),
                          cuda_id=self.cuda_id)
 
